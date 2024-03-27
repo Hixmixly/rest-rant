@@ -7,7 +7,7 @@ function home () {
             <main>
                 <h1>HOME</h1>
                 <div>
-                    <img src = "/images/fruity_desert.jpg" />
+                    <img src = "/images/fruity_desert.jpg" alt ='fruity desert'/>
                 </div>
 
                 <div>

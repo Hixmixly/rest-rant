@@ -4,11 +4,12 @@ module.exports = [{
       state: 'WA',
       cuisines: 'Thai, Pan-Asian',
       pic: '/images/resturant1'
+      
     }, {
       name: 'Coding Cat Cafe',
       city: 'Phoenix',
       state: 'AZ',
       cuisines: 'Coffee, Bakery',
-      pic: 'http://placekitten.com/250/250'
+      pic: '/images/resturant2.jpg'
     }]
   
