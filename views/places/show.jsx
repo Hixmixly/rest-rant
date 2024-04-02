@@ -29,11 +29,12 @@ function show (data) {
                     </a> 
                 </div>
                
-                <form method='POST' action={`/places/${data.id}?_method=DELETE`}>
-                    <button type= 'submit' className='btn btn-danger'>
-                    Delete
+                <form method="POST" action={`/places/${data.id}?_method=DELETE`}> 
+                    <button type="submit" className="btn btn-danger">
+                        Delete
                     </button>
-                </form>
+                </form> 
+
 
             </body>
           </main>
