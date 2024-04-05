@@ -16,16 +16,40 @@ function edit_form (data) {
                         name="name" 
                         value= {data.place.name}
                         required/>
-            </div>
+                </div>
             <div className='form-group col-sm-6'>
                 <label htmlFor="pic">
-                    Place Picture</label>
-                    <input 
-                    className='form-control' 
-                    id="pic" 
-                    name="pic" />
+                    Place Picture
+                </label>
+                    <input name="pic" />
             </div>
-        </div>
+        
+             <div className='form-group col-sm-6'>
+                <label htmlFor="city">City</label>
+                 <input className='city' 
+                 id="city" 
+                 name="city" />
+            </div>
+            <div className='form-group col-sm-6'>
+                <label htmlFor="state">
+                    State
+                    </label>
+                    <input className='state'  
+                    id="state" name="state" />
+            </div>
+            <div className='form-group col-sm-6'>
+                <label htmlFor="cuisines">
+                    Cuisines
+                    </label>
+                    <input className='cuisines' 
+                    id="cuisines" name="cuisines" 
+                    required />
+            </div>
+                <input 
+                className='btn btn-primary' 
+                type="submit" 
+                value="Add Place" />
+            </div>
         </form>
 
           </main>
