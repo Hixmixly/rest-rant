@@ -17,34 +17,51 @@ function edit_form (data) {
                         value= {data.place.name}
                         required/>
                 </div>
-            <div className='form-group col-sm-6'>
-                <label htmlFor="pic">
+                
+                <div className='form-group col-sm-6'>
+                    <label htmlFor="pic">
                     Place Picture
-                </label>
-                    <input name="pic" />
-            </div>
+                    </label>
+                    <input 
+                    className='form-control'
+                    id='pic'
+                    name="pic"
+                    value={data.place.pic} 
+                    />
+                </div>
         
-             <div className='form-group col-sm-6'>
+                <div className='form-group col-sm-6'>
                 <label htmlFor="city">City</label>
-                 <input className='city' 
+                 <input 
+                 className='city' 
                  id="city" 
-                 name="city" />
-            </div>
-            <div className='form-group col-sm-6'>
+                 name="city" 
+                 value={data.place.city}/>
+                </div>
+            
+                <div className='form-group col-sm-6'>
                 <label htmlFor="state">
                     State
                     </label>
-                    <input className='state'  
-                    id="state" name="state" />
-            </div>
-            <div className='form-group col-sm-6'>
+                    <input 
+                    className='state'  
+                    id="state" 
+                    name="state" 
+                    value={data.place.state}/>
+                </div>
+            
+                <div className='form-group col-sm-6'>
                 <label htmlFor="cuisines">
                     Cuisines
                     </label>
-                    <input className='cuisines' 
-                    id="cuisines" name="cuisines" 
+                    <input 
+                    className='cuisines' 
+                    id="cuisines" 
+                    name="cuisines"
+                    value={data.place.cuisines} 
                     required />
-            </div>
+                </div>
+                
                 <input 
                 className='btn btn-primary' 
                 type="submit" 
