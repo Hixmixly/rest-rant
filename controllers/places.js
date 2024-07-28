@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../models');  // Ensure you have the correct path
+const db = require('../models');  
 
 // GET /places
 router.get('/', (req, res) => {
@@ -34,18 +34,15 @@ router.get('/new', (req, res) => {
 // GET /places/:id
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
-    .then(place => {
-      if (place) {
-        res.render('places/show', { place });
-      } else {
-        res.render('error404');
-      }
-    })
-    .catch(err => {
-      console.log(err);
-      res.render('error404');
-    });
-});
+  .then(place => {
+      res.render('places/show', { place })
+  })
+  .catch(err => {
+      console.log('err', err)
+      res.render('error404')
+  })
+})
+
 
 // PUT /places/:id
 router.put('/:id', (req, res) => {
