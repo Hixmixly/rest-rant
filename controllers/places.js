@@ -1,41 +1,109 @@
-const express = require ('express');
+const express = require('express');
 const router = express.Router();
-const places = require ('../models/places.js')
+const db = require('../models');  // Ensure you have the correct path
 
+// GET /places
 router.get('/', (req, res) => {
-  res.send('GET /places stub')
-})
+  db.Place.find()
+    .then((places) => {
+      res.render('places/index', { places });
+    })
+    .catch(err => {
+      console.log(err);
+      res.render('error404');
+    });
+});
 
+// POST /places
 router.post('/', (req, res) => {
-  res.send('POST /places stub')
-})
+  db.Place.create(req.body)
+    .then(() => {
+      res.redirect('/places');
+    })
+    .catch(err => {
+      console.log('err', err);
+      res.render('error404');
+    });
+});
 
+// GET /places/new
 router.get('/new', (req, res) => {
-  res.render('places/new')
-})
+  res.render('places/new');
+});
 
+// GET /places/:id
 router.get('/:id', (req, res) => {
-  res.send('GET /places/:id stub')
-})
+  db.Place.findById(req.params.id)
+    .then(place => {
+      if (place) {
+        res.render('places/show', { place });
+      } else {
+        res.render('error404');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.render('error404');
+    });
+});
 
+// PUT /places/:id
 router.put('/:id', (req, res) => {
-  res.send('PUT /places/:id stub')
-})
+  db.Place.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(place => {
+      if (place) {
+        res.redirect(`/places/${req.params.id}`);
+      } else {
+        res.render('error404');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.render('error404');
+    });
+});
 
+// DELETE /places/:id
 router.delete('/:id', (req, res) => {
-  res.send('DELETE /places/:id stub')
-})
+  db.Place.findByIdAndDelete(req.params.id)
+    .then(place => {
+      if (place) {
+        res.redirect('/places');
+      } else {
+        res.render('error404');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.render('error404');
+    });
+});
 
+// GET /places/:id/edit
 router.get('/:id/edit', (req, res) => {
-  res.send('GET edit form stub')
-})
+  db.Place.findById(req.params.id)
+    .then(place => {
+      if (place) {
+        res.render('places/edit', { place });
+      } else {
+        res.render('error404');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.render('error404');
+    });
+});
 
+// POST /places/:id/rant
 router.post('/:id/rant', (req, res) => {
-  res.send('GET /places/:id/rant stub')
-})
+  res.send('GET /places/:id/rant stub');
+});
 
+// DELETE /places/:id/rant/:rantId
 router.delete('/:id/rant/:rantId', (req, res) => {
-    res.send('GET /places/:id/rant/:rantId stub')
-})
+  res.send('GET /places/:id/rant/:rantId stub');
+});
 
-module.exports = router
+module.exports = router;
+
