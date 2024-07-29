@@ -2,10 +2,19 @@ const React = require('react')
 const Def = require('../default')
 
 function show (data) {
+    let message = ''
+        if (data.message) {
+            message = (
+                <h4 className = 'alert-danger'>
+                    {data.message}
+                </h4>
+            )
+        }
     return (
         <Def>
           <main>
-            <h1>{data.place.name}</h1>
+            <h1>Add a New Place</h1>
+            {message}
             <h3>Located in {data.place.city}, {data.place.state}</h3>            
             <div>
                 <h3>Rating</h3>
@@ -13,7 +22,7 @@ function show (data) {
             </div>
             <div>
                 <h3>Description</h3>
-                <p>{data.place.description}</p>
+                <p>{data.place.description ? data.place.description : 'No description provided'}</p>
             </div>
             <h3>
                 {data.place.showEstablished ? data.place.showEstablished() : 'Unknown Establishment Date'}
@@ -26,7 +35,7 @@ function show (data) {
                 <p>No comments yet</p>
             </div>
             <div>
-                <a href={`/places/${data.place.id}/edit`} className="btn btn-warning"> 
+                <a href={`/places/${data.place._id}/edit`} className="btn btn-warning"> 
                      Edit
                 </a> 
             </div>

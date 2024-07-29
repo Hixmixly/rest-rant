@@ -21,7 +21,14 @@ router.post('/', (req, res) => {
       res.redirect('/places');
     })
     .catch(err => {
-      console.log('err', err);
+      if ('err' && err.name == 'ValidationError'){
+        let message = 'Validation Error:'
+        for (let field in err.errors){
+          message += `${err.errors[field].message}`;
+        }
+        //TODO: Generate error message (s)
+        res.render('places/new', {message})
+      } 
       res.render('error404');
     });
 });
@@ -35,7 +42,7 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
   .then(place => {
-      res.render('places/show', { place })
+      res.render('places/show', { place: place })
   })
   .catch(err => {
       console.log('err', err)
