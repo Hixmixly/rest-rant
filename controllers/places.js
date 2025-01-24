@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
       if ('err' && err.name == 'ValidationError'){
         let message = 'Validation Error:'
         for (let field in err.errors){
+          message += `${field} was ${err.errors[field].value}.`
           message += `${err.errors[field].message}`;
         }
         //TODO: Generate error message (s)
@@ -35,7 +36,8 @@ router.post('/', (req, res) => {
 
 // GET /places/new
 router.get('/new', (req, res) => {
-  res.render('places/new');
+  console.log('Rendering new-form view');
+  res.render('places/new-form');
 });
 
 // GET /places/:id
