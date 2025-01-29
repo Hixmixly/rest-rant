@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 // GET /places/new
 router.get('/new', (req, res) => {
   console.log('Rendering new-form view');
-  res.render('places/new-form');
+  res.render('places/new');
 });
 
 // GET /places/:id
